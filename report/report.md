@@ -6,15 +6,22 @@ date: \today
 bibliography: ref.bib
 ---
 
-# Introduction
+# Introduction and concept
 
-TODO introduction
+In recent years researchers studies new algorithmically ways to compose soundscapes.
+A generative soundscape usually borrows audio sources from existing audio databases.
+Similarly to traditional techniques for computer composition, these algorithms always generate high level parameters for the performance of the musical piece.
+High level parameters may include geo-location information, semantical meaning, or spectral characteristics of the sounds to use, and can affect later processing and mixing of the sounds.
+However, with recent techniques from the field of machine learning it might be possible to generate streams of raw audio that are based only on the ability of computers and algorithms to learn by listening to audio.
 
-_ends with explanation of following sections._
+In the current work I create a semi-generative soundscape that explores the computer's perception of digital privacy, using deep learning neural networks.
+First, I recorded several hours of conversations and every-day sounds from my apartment, including intimate moments.
+It is important to note that the audio sources deliberately contain a lot of private information.
+Than, a deep neural network is trained with this recordings to extract understanding of patterns in the audio stream to later mimic them when generating raw audio.
+Finally, these new audio sources will be used to compose a soundscape.
+The final result investigate the relationships between art, algorithms, and digital privacy in the age of surveillance.
 
-# Concept
-
-TODO concept
+The following sections presents the literature background for the project and plans for realizing the concept.
 
 # Literature review
 
