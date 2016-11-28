@@ -1,5 +1,5 @@
 ---
-title: '"Digital privacy": Generative soundscape concept and technical description'
+title: '"Digital privacy": A semi-generative soundscape. Concept and technical description'
 abstract: TODO abstract
 author: Tom Gurion
 date: \today
