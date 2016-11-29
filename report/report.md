@@ -64,12 +64,6 @@ Thus, it is not surprising that attempts are already being made to enable _style
 [^audio-transfer-reddit]: [redd.it/51sr9t](https://redd.it/51sr9t).
 [^audio-transfer-repo]: [github.com/Fr-d-rik/generative_audio](https://github.com/Fr-d-rik/generative_audio).
 
-<!--
-  In a recent blog post [^sony-csl-music] Sony's Computer Science Lab researchers published their AI composed song "Daddy's Car".
-
-  [^sony-csl-music]: [www.flow-machines.com/ai-makes-pop-music](http://www.flow-machines.com/ai-makes-pop-music/).
--->
-
 ## Digital privacy
 
 Privacy and freedom in the age of modern technology seems to be threaten both by national surveillance programs [@Milanovic2015] and by social media companies [@Gritzalis2014].
