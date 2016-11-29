@@ -35,6 +35,13 @@ Soundscapes tend to represent real world or artificial environments, as well as 
 This medium dates back to the 1960s and traditionally involves the transparent editing and mixing of high quality field recording [@Truax2002; @Birchfield2005a].
 In contrast to traditional composition and studio techniques, recent studies suggest frameworks for composing soundscapes algorithmically [@Birchfield2005;  @Finney2010; @Eigenfeldt2011; @Thorogood2013].
 
+According to Eigenfeldt and Pasquier the four basic principles of the medium should be preserved in generative soundscape composition [-@Eigenfeldt2011]:
+
+- The audio materials should be recognizable.
+- The composition should invoke the listener's psychological context of the environment.
+- The composer understanding of the environment should be mirrored by the composition.
+- The resulted soundscape should enhance our understanding of the world.
+
 Choosing audio sources for a generative soundscape composition is an interesting topic addressed by the literature.
 A common strategy is to search for audio samples by metadata in databases such as _freesound_[^freesound]. The search might query a specific or semantically similar tag [@Thorogood2013], geo-location [@Finney2010], or expected spectral characteristics [@Eigenfeldt2011].
 Other examples include using user uploaded media samples from their daily lives [@Birchfield2005].
