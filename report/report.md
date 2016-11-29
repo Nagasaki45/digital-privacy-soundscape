@@ -1,6 +1,6 @@
 ---
 title: '"Digital privacy": A semi-generative soundscape. Concept and technical description'
-abstract: TODO abstract
+abstract: In this work I explore new ways to algorithmically generate audio materials for soundscape composition using deep learning techniques. These algorithms can learn audio characteristics by listening to raw audio and later generate new samples with similar properties. The deep learning model is trained on audio excerpts deliberately containing private information. The algorithmically generate audio materials are later used to compose soundscape that mirror the existing conflicts between art, artificial intelligence, and privacy in the age of ubiquitous surveillance.
 author: Tom Gurion
 date: \today
 bibliography: ref.bib
