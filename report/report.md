@@ -53,7 +53,12 @@ Other examples include using user uploaded media samples from their daily lives 
 A recent study by Van Den Oord et al. presented deep learning techniques for generating raw audio, sample by sample in an arbitrary high sampling rate [-@VanDenOord2016].
 Their study shows promising results for musical applications[^wavenet-blog].
 Existing algorithmic music studies, in comparison, always output score notation [@Papadopoulos2016] or other high level representation of to music or sound synthesis [@Cope1991; @Birchfield2003].
-_TODO explain local conditioning._
+
+One important aspect in the work of Van Den Oord et al. is the idea of global conditioning.
+They trained their model with audio excerpts of English sentences made by several speakers.
+The model thereby learned the general characteristics of the English language, as well as the special characteristics of each speaker.
+Later, the raw audio generation process could be controlled to mimic each speaker by conditioning the model to use its understanding of the specific speaker characteristics.
+The concept of local conditioning and its applications, as presented in this study, will not be addressed in the current work.
 
 In 2015, Mordvintsev, Olah, and Tyka published a blog post entitled "Inceptionism: Going deeper into Neural Networks"[^deepdream-blog].
 This blog post shows how they modified deep learning algorithms for image classification to create new images.
