@@ -1,3 +1,0 @@
-[submodule "tensorflow-wavenet"]
-	path = tensorflow-wavenet
-	url = https://github.com/ibab/tensorflow-wavenet.git
