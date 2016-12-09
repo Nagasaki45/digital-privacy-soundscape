@@ -4,6 +4,9 @@ abstract: In this work I explore new ways to algorithmically generate audio mate
 author: Tom Gurion
 date: \today
 bibliography: ref.bib
+colorlinks: 1
+geometry: margin=1in
+linestretch: 1.5
 ---
 
 # Introduction and concept
