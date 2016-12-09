@@ -138,4 +138,65 @@ This scenario will not require a lot of post processing, and the final compositi
 In a more realistic scenario I would not be able to generate long streams of audio, but only short samples (in the scale of a few seconds).
 Using such samples will require a more involved compositional and post processing phase.
 
+# List of audio sources
+
+All the audio sources in this soundscape were generated using deep neural networks. They can be generally divided to three groups.
+
+1. **Mine**: samples I generated using tensorflow-wavenet.
+The models that were used for generating these samples were trained with less than 5000 steps, due to lack of computational power.
+However, in some of the samples the resulting noisy signal have some temporal speech like characteristics, so I used them in the composition.
+These samples can be found online[^my-samples].
+1. **Users**: samples downloaded from tensorflow-wavenet users.
+In this case, the model was properly trained and the output is perceptually similar to speech sounds.
+Samples in this category are the most varied due to different approaches and constrains the users of the library had.
+All of these samples were downloaded from discussions about the project on github[^tensorflow-wavenet-samples].
+1. **Wavenet**: samples downloaded from the section titled "Knowing what to say" in google's blog post about wavenet, which accompanied the research paper with audible examples.
+This category presents the most speech like samples from the three.
+
+TODO point to github for downloading the samples.
+
+Table: Samples used in the soundscape\label{samples-table}. Steps TODO explain. Bootstraping TODO explain. TODO note of other params - primary receptive field. TODO Sample size.
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+Sample                                              Steps     RF         Details
+--------------------------------------------------- --------- ---------- ----------------------------------------------------------------------------------------------------------------------------------------
+`mine/generated<X>.wav`                             <1K       600ms      Trained on recordings from my apartment.
+
+`mine/large.wav`                                    4,695     600ms      Trained on recordings from my apartment.
+
+`mine/vctk<X>.wav`                                  `<X>`     600ms      Trained on the whole VCTK corpus.
+
+`wavenet/<X>.wav`                                   N/A       N/A        Samples downloaded from google's blog post about wavenet.
+
+`users/01.mp3`                                      28K       60ms       [Trained on a single sample from the VCTK corpus](https://soundcloud.com/user-952268654/wavenet-28k-steps-of-100k-samples).
+
+`users/02.mp3`                                      28K       250ms      [Trained on speaker 280 from the VCTK corpus](https://soundcloud.com/user-731806733/generated-larger-1).
+
+`users/03.mp3`                                      15K       200ms      [Trained on speaker 280 from the VCTK corpus](https://soundcloud.com/travis-morton-654696702/mortont-generated-audio).
+
+`users/04.mp3`                                      12K       350ms      [Trained on speaker 280 from the VCTK corpus with bootstrapping](https://soundcloud.com/travis-morton-654696702/mortont-generated-audio).
+
+`users/05.mp3`                                      40K       500ms      [Trained on speaker 280 from the VCTK corpus](https://soundcloud.com/user-731806733/tensorflow-wavenet-500-msec).
+
+`users/06.mp3`                                      88K       500ms      [Trained on speaker 280 from the VCTK corpus](https://soundcloud.com/user-731806733/tensorflow-wavenet-500-msec-88k-train-steps).
+
+`users/07<X>.mp3`                                   N/A       N/A        [Trained on speaker 266 from the VCTK corpus](https://soundcloud.com/underwhelming-force/sets/wavenet-experimentation-iii/s-46gyC).
+
+`users/08.mp3`                                      53K       130ms      [Trained on the whole VCTK corpus](https://soundcloud.com/adroit_91/tensorflow-wavenet-generated-samples-27th-sep-code).
+
+`users/09.wav`                                      >80K      N/A        [Trained on the whole VCTK corpus](https://github.com/ibab/tensorflow-wavenet/files/499777/generated_59800_27Sep.wav.zip).
+
+`users/10.mp3`                                      67K       N/A        [Trained on a Korean speech corpus](https://soundcloud.com/nako-sung/67200a).
+
+`users/11.mp3`                                      N/A       250ms      [Trained on a Korean speech corpus](https://soundcloud.com/nako-sung/wavenet-korean-corpus-female-receptive-250msloss-25).
+
+`users/12.mp3`                                      50K       300ms      [Trained on a Korean speech corpus](https://soundcloud.com/nako-sung/test).
+
+`users/13.mp3`                                      50K       300ms      [Trained on a Korean speech corpus](https://soundcloud.com/nako-sung/test-3-wav).
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+[^my-samples]: [github.com/Nagasaki45/digital-privacy-soundscape/tree/master/samples/mine](https://github.com/Nagasaki45/digital-privacy-soundscape/tree/master/samples/mine).
+[^tensorflow-wavenet-samples]: [github.com/ibab/tensorflow-wavenet/issues/47](https://github.com/ibab/tensorflow-wavenet/issues/47).
+[^vctk-corpus]: [homepages.inf.ed.ac.uk/jyamagis/page3/page58/page58.html](http://homepages.inf.ed.ac.uk/jyamagis/page3/page58/page58.html).
+
 # References
