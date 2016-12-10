@@ -1,4 +1,6 @@
 report/*.pdf
 data/
 logdir/
+renders/
 *.swp
+*.reapeaks
