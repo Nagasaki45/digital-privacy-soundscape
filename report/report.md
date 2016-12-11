@@ -56,12 +56,6 @@ A recent study by Van Den Oord et al. presented deep learning techniques for gen
 _WaveNet_, the algorithm they developed, shows promising results for musical applications[^wavenet-blog].
 Compared to _WaveNet_, existing algorithms for generative music composition always output score notation [@Papadopoulos2016] or other high level representation of music or sound synthesis [@Cope1991; @Birchfield2003].
 
-One important aspect in the work of Van Den Oord et al. is the idea of global conditioning.
-They trained their model with audio excerpts of English sentences made by several speakers.
-The model thereby learned the general characteristics of the English language, as well as the special characteristics of each speaker.
-Later, the raw audio generation process could be controlled to mimic each speaker by conditioning the model to use its understanding of the specific speaker characteristics.
-The concept of local conditioning and its applications, as presented in this study, will not be addressed in the current work.
-
 In 2015, Mordvintsev, Olah, and Tyka published a blog post entitled "Inceptionism: Going deeper into Neural Networks"[^deepdream-blog].
 This blog post shows how they modified deep learning algorithms for image classification to create new images.
 In the public media, the project received the name _DeepDream_, after the idea that the images present the dreams of deep learning algorithms (see example in the left panel of figure \ref{deepdream-and-style-transfer}).
@@ -77,6 +71,22 @@ Thus, it is not surprising that attempts are already being made to enable _style
 [^deepdream-blog]: [research.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html](https://research.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html).
 [^audio-transfer-reddit]: [redd.it/51sr9t](https://redd.it/51sr9t).
 [^audio-transfer-repo]: [github.com/Fr-d-rik/generative_audio](https://github.com/Fr-d-rik/generative_audio).
+
+### Global conditioning
+
+One important aspect in the work of Van Den Oord et al. is the idea of global conditioning.
+They trained their model with audio excerpts of English sentences made by several speakers.
+The model thereby learned the general characteristics of the English language, as well as the special characteristics of each speaker.
+Later, the raw audio generation process could be controlled to mimic each speaker by conditioning the model to use its understanding of the specific speaker characteristics.
+The concept of local conditioning and its applications, as presented in this study, will not be addressed in the current work.
+
+### Training steps
+
+TODO training steps
+
+### Receptive field
+
+TODO receptive field
 
 ## Digital privacy
 
@@ -94,66 +104,89 @@ Surveillance is especially common as the subject in graffiti and street art [@Br
 
 The realization of the concept requires several hours of recordings, a deep neural network capable of learning and then generating raw audio with similar characteristics, and post processing phase for composing a soundscape from the resulted audio samples.
 
-The audio sources for this project are several hours of conversations, fights, and intimate moments (including sex) of my partner and I, as well as every-day sounds such as cooking and dish washing.
-All of the recordings were done with a Zoom H4n handheld audio recorder[^zoom] on a tripod in the same positioning in my apartment.
-Each recording is manually chopped to contain only one content type.
-For example, when a long recording starts with a conversation and continues with dish washing I manually cut it into two separated audio files.
-The importance of this procedure will be explained when discussing the characteristics of the deep neural network algorithm.
+Originally, I planned to use recordings of several hours of conversations, fights, and intimate moments (including sex) of my partner and I, as well as every-day sounds such as cooking and dish washing.
+Influenced by the promises of _WaveNet_, I tried to train a deep neural network with this private audio files.
+This way, after learning the sonic characteristics of the original sources it might be able to generate similar but content-less audio.
+I used the free and open source project _tensorflow-wavenet_[^tensorflow-wavenet], which is entitled as "a TensorFlow implementation of the WaveNet generative neural network architecture for audio generation".
+Unfortunately, I failed to use this technology to generate raw audio that demonstrate similar sonic characteristics to the sources.
+An elaborated explanation this attempt didn't succeed is presented in the next section.
 
-Influenced by the promises of _WaveNet_, I hereby apply similar techniques to generate audio that mimics the sonic characteristics of the original sources but completely obscure the content.
-To generate the audio I use the free and open source project _tensorflow-wavenet_[^tensorflow-wavenet], which is entitled as "a TensorFlow implementation of the WaveNet generative neural network architecture for audio generation".
-Having audio files with homogeneous content are used to train the deep neural network, when the content are considered as the global context.
-In the study of Van Den Oord et al. the context used for global conditioning was the speaker; in the current work the context is the content of the audio source.
-After training the model I generate audio streams that are conditioned on each content type.
-In addition, I generate unconditioned audio to use in the final composition.
+Finally, instead of generating audio for the soundscape I used samples of other users of the same software package that are available online.
+I used the REAPER DAW[^reaper] to edit, mix, and master the final soundscape.
+In general, the composition followed the four basic soundscape composition principles of Eigenfeldt and Pasquier using the algorithmically generated materials crowd sourced from the web.
 
-Finally, the resulted audio samples are composed manually, using the REAPER DAW[^reaper], to create the final soundscape.
-The composition considers the different types of contents to build up an interesting story from the samples.
-The exact composition and post processing techniques will depend on the characteristics of the generated audio samples, which, in this step of the project, are unclear.
-In general, the composition will follow the four basic soundscape composition principles of Eigenfeldt and Pasquier using the algorithmically generated materials.
-
-[^zoom]:[zoom-na.com/products/field-video-recording/field-recording/zoom-h4n-handy-recorder](https://www.zoom-na.com/products/field-video-recording/field-recording/zoom-h4n-handy-recorder)
+[^zoom]:[zoom-na.com/products/field-video-recording/field-recording/zoom-h4n-handy-recorder](https://www.zoom-na.com/products/field-video-recording/field-recording/zoom-h4n-handy-recorder).
 [^tensorflow-wavenet]: [github.com/ibab/tensorflow-wavenet](https://github.com/ibab/tensorflow-wavenet).
 [^reaper]: [reaper.fm](http://reaper.fm/).
 
-## Current state
+## Why the original plan failed
 
-The training of the deep neural network model and the generation of the audio was not started yet.
-I still need to figure out how much computational power this project will require, and what will be considered as feasible.
+I started by recording approximately 10 hours of diverse materials, as planned, using the Zoom H4n handheld audio recorder[^zoom] on a tripod in my apartment.
+Each recording was manually sliced to create audio files that contain homogeneous content.
+For example, when a long recording starts with a conversation and continues with dish washing I manually slice it into two separated audio files.
+I intended to rely on the homogeneity of the audio files to train the deep neural network, when the content is considered as the global conditioning context.
+In the study of Van Den Oord et al. the global context for conditioning was the speaker; in the current work the context is the content of the audio source.
 
-However:
+After training the model with this content the generated audio contained nothing but noise and crackles.
+In retrospective, there are several reason for this first failure:
 
-- I already recorded around 10 hours of diverse materials.
-- I started to learn and experiment with _tensorflow-wavenet_.
-- There is a good chance that my computer doesn't have enough compute power, so I am checking cloud compute offerings by Amazon Web Services and Microsoft Azure.
+- Compared to the VCTK corpus, which is used by Van Den Oord et al. and by the _tensorflow-wavenet_ users, my audio files were way more noisy.
+- Similarly, my audio files were more sonically diverse, preventing the model from generalizing properly.
+- I probably used too long receptive field.
+I tried to reduce the sample rate from 16Khz to 8Khz to train the model faster but kept the dilated layers with the same length.
+The training might run faster if I reduce the dilated layer length, without scarifying the model ability to generalize.
+- Lastly, all of the successful results from _tensorflow-wavenet_ users used more than 15,000 training steps, when best results achieved after 50,000 steps or more.
+On my computer it is just not feasible, as it takes approximately 10 seconds for training step (~6 days to reach 50K steps).
 
-## Optimistic scenario
+As a second attempt I tried to train the model on the VCTK corpus, as several users did and succeeded.
+For me, it was a required step to make sure that I know how to use the software properly, what are its capabilities, and what can be considered computational feasible using my setup.
+This attempt also failed, but I managed to learn most of the above points from its failure.
+In addition, I found out that training a model on the whole dataset is even more computationally intensive and most users train the model on single speaker or even single audio file (a sentence recorded by a speaker).
 
-In my optimistic scenario I will be able to train the model with global conditioning based on context.
-Using this model, I will generate a few minutes stream from each content for later composition and post processing.
-This scenario will not require a lot of post processing, and the final compositional will only require the selection of interesting segments from the generated audio and concatenate them by content in a meaningful way.
+Lastly, I tried to use Amazons' services for training the model on a computer in the cloud that is much more capable than mine and has a GPU for deep learning.
+However, the registration should be manually accepted by the support team, and by the time I got a response from them I already choose an alternative realization for the concept.
 
-## Realistic scenario
+To summarize, all of my attempts to use _tensorflow-wavenet_ failed.
+I learned from the failures, but not fast enough to find solutions in time for this assignment.
 
-In a more realistic scenario I would not be able to generate long streams of audio, but only short samples (in the scale of a few seconds).
-Using such samples will require a more involved compositional and post processing phase.
+## An alternative
 
-# List of audio sources
+Instead of generating all of the audio samples for the soundscape I choose to compose a soundscape from samples from three main sources:
 
-All the audio sources in this soundscape were generated using deep neural networks. They can be generally divided to three groups.
-
-1. **Mine**: samples I generated using tensorflow-wavenet.
-The models that were used for generating these samples were trained with less than 5000 steps, due to lack of computational power.
+1. **Mine**: samples I generated using _tensorflow-wavenet_ and are generally used as noise sources.
 However, in some of the samples the resulting noisy signal have some temporal speech like characteristics, so I used them in the composition.
 These samples can be found online[^my-samples].
-1. **Users**: samples downloaded from tensorflow-wavenet users.
+1. **Users**: samples downloaded from _tensorflow-wavenet_ users.
 In this case, the model was properly trained and the output is perceptually similar to speech sounds.
 Samples in this category are the most varied due to different approaches and constrains the users of the library had.
 All of these samples were downloaded from discussions about the project on github[^tensorflow-wavenet-samples].
 1. **Wavenet**: samples downloaded from the section titled "Knowing what to say" in google's blog post about wavenet, which accompanied the research paper with audible examples.
 This category presents the most speech like samples from the three.
 
-TODO point to github for downloading the samples.
+By using samples that were created with deep neural network, and mimic speech sounds, the general concept is still preserved.
+The privacy concern that presented by the original concept is somewhat weakened, because the original audio sources (mainly the VCTK corpus) does not contain private information, but is publicly available.
+However, the samples can be seen as the artificial understanding of speech by a computer.
+Therefore, questions of privacy and our relations with technology still present in the final result.
+
+[^my-samples]: [github.com/Nagasaki45/digital-privacy-soundscape/tree/master/samples/mine](https://github.com/Nagasaki45/digital-privacy-soundscape/tree/master/samples/mine).
+[^tensorflow-wavenet-samples]: [github.com/ibab/tensorflow-wavenet/issues/47](https://github.com/ibab/tensorflow-wavenet/issues/47).
+[^vctk-corpus]: [homepages.inf.ed.ac.uk/jyamagis/page3/page58/page58.html](http://homepages.inf.ed.ac.uk/jyamagis/page3/page58/page58.html).
+
+# Production decisions
+
+## Composition
+
+## Sound design techniques
+
+## Mixing
+
+## Mastering
+
+# Discussion
+
+# Conclusion
+
+# Appendix A: List of sounds
 
 Table: Samples used in the soundscape\label{samples-table}. Steps TODO explain. Bootstraping TODO explain. TODO note of other params - primary receptive field. TODO Sample size.
 
@@ -195,8 +228,14 @@ Sample                                              Steps     RF         Details
 `users/13.mp3`                                      50K       300ms      [Trained on a Korean speech corpus](https://soundcloud.com/nako-sung/test-3-wav).
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
-[^my-samples]: [github.com/Nagasaki45/digital-privacy-soundscape/tree/master/samples/mine](https://github.com/Nagasaki45/digital-privacy-soundscape/tree/master/samples/mine).
-[^tensorflow-wavenet-samples]: [github.com/ibab/tensorflow-wavenet/issues/47](https://github.com/ibab/tensorflow-wavenet/issues/47).
-[^vctk-corpus]: [homepages.inf.ed.ac.uk/jyamagis/page3/page58/page58.html](http://homepages.inf.ed.ac.uk/jyamagis/page3/page58/page58.html).
+# Appendix B: Screenshots
+
+![\label{daw-arrangement}TODO arrangement caption.](media/daw_arrangement.png)
+
+![\label{daw-mixer}TODO mixer caption.](media/daw_mixer.png)
+
+![\label{daw-mastering}TODO mastering caption.](media/daw_mastering.png)
+
+\newpage
 
 # References
