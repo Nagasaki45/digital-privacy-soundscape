@@ -176,11 +176,113 @@ Therefore, questions of privacy and our relations with technology still present 
 
 ## Composition
 
-## Sound design techniques
+The soundscape follows a gradual transition from noise to artificial speech-like sounds and back to noise.
+It is composed of three main parts.
+The first presents the transition until the computer can speak;
+the second explores different characteristics of the artificially generated speech;
+the third regress back to the starting point and ends the piece with noise sounds.
+
+The first part of the soundscape starts with two bursts of noise which are a recurring motive throughout the piece.
+Than, it takes the listener through the different stages of how the computer perceive speech:
+At the beginning the noise sounds have no structure that could resemble speech.
+Than, it starts to form temporal structure and transform to abrupt and incoherent sounds of spoken syllables.
+The part ends by building up a cloud of babbling sounds.
+This cloud gradually gets darker and goes to the back to give space of the second part of the piece.
+
+The second part of the soundscape starts while the cloud of babbling sounds is still playing in the background.
+A narrator starts to talk with the first voice in the composition that mimic human behaviour well.
+The fact that the content of the narration is meaningless makes the experience mysterious and somewhat annoying.
+Than, the narrator is interrupted by another voice, and shortly after a group of more human sounding speakers join the intense conversation.
+During the second part of the piece there is exploration of different aspects of the artificially speech.
+It involve dense conversations between different voices, a cloud of babbling (borrowed from the first part), and noises that interfere during pauses.
+This part come to an end in a distinct cut in the dense mesh of voices, short burst of noise, and significant change in harmonic content that mark the start of the third part.
+
+The third and last part of the piece starts with a babbling cloud, now based on the voices from the conversations of part two.
+This cloud starts far from the listener and gets closer over time.
+In addition, the babbling gradually replaced by the noises from the beginning.
+These two characteristics mirror the cloud that ends the first part.
+The piece ends with more noises and incoherent sounds of spoken syllables that were presented in the first part.
+As opposed to the first part, they are now accompanied by a sounds from the second part in the far background.
+The final phrase in the soundscape is the burst of noises that open the piece.
+
+This cyclic structure invite the listener to hear how algorithms listen to and mimic human speech.
+The uniqueness of the audio sources used in the soundscape are mysterious, fascinating, and annoying at the same time, especially when considering the possibility that technology is always listening to our everyday life.
+Gradually returning to the beginning when only noises are presented allows the listener to reflect on the auditory/technological journey.
+
+## Layout and editing
+
+In this section I will describe the technical part of the composition, which mainly involved precise editing and manipulating the samples.
+This processes are usually described as part of the mixing phase of a track, but I prefer to describe them separately due to the role of the techniques in the soundscape:
+whereas mixing usually starts after all of the material is organized in time, the techniques below are crucial part in the organization of the material.
+
+The soundscape was composed, edited, mixed and mastered using the REAPER DAW.
+Figure \ref{daw-arrangement} shows the arrangement view.
+The colors of the samples indicate to which category they belong:
+Samples in red are from the category **mine**;
+Samples in green are from the category **users**;
+Samples in blue are from the category **wavenet**;
+Samples in yellow are the bounces of the reverb channel.
+Using this color coding of samples it is clearly visible that the soundscape gradually move from using samples from the **mine** category, through the **users** category, and to the **wavenet** category.
+Towards the end of the piece the process is reversed.
+The special characteristic of each samples category was used in this way to support the composition.
+
+It is important to note that although the samples of the **users** category generally demonstrate well sounded human speech sounds they still contain a lot of noise (clicks).
+Moreover, all of the samples in the composition are sampled in a sample rate of 16Khz.
+I found this issues somewhat problematic during the mastering process, but overall, the "lo-fi" characteristic can support the general concept of algorithmic perception of human behavior.
+
+The whole soundscape is organized as three audio groups: noise, babbling, and cloud.
+The noise and the babbling groups contain three tracks each, one for left panned content, one for right panned content, and one for the content in the middle.
+I found that this organization of content to be both productive and creative.
+
+The cloud track uses the REAPER feature of tracks with "Free item positioning".
+That way I can place several different items that will play in parallel on the same track.
+The cloud track is used for both noises and babbling sounds.
+The "Free item positioning" feature allow me to transition gradually between clouds of different audio sources.
+Having the different sources on the same track unify them as the pass through the same effects.
+For example, in 0:50-1:00 there is a transition between different audio materials in a cloud, from noises to babbling, while the cloud as a whole goes back in the mix using effects automation.
+I wrote a script to randomise panning of items[^random-panning-script] and used it on most of the clouds in the composition to made them rich and wide sounding.
+In addition, I tend to apply time stretching and pitch shifting manually to some of the clouds to emphasize specific peaks in the composition (an example can be heard 2:01-2:10).
+
+Another "audio source" I used in the composition is the bounced output of the reverb channel.
+Starting in the second part of the composition, I wanted most of the speech like sounds to be relatively clear, without reverb.
+However, I found that after a cloud ends the continuation without a reverb make the sound too thin.
+To solve this I recorded the sound of the reverb channel (only the wet signal), and used it as another audio source.
+For example, during most of the second part of the composition there is a wet reverb signal playing parts of the first part of the composition.
+This technique added a lot of depth to the mix, but without blurring the speech sounds in the front of the mix (such as the narrator that opens the second part).
 
 ## Mixing
 
+The mixing stage of the soundscape did not involve a lot of manipulation, as most of the work was already done in the previous step as described before.
+However, I found that the babbling group lacked high frequency content and was dynamically unstable.
+To solve this I used an exciter to open up the higher frequencies and a compressor to reduce the dynamic range of the group.
+
+The reverb used in the composition is the Valhalla Room[^valhalla-room], set to long dark reverberation.
+I decided to send the left and right tracks of the babbling group to the reverb and added automation to send the cloud to the reverb during the second part of the composition.
+
+The final mix was rendered in 24Bit and 44.1Khz.
+The output wav file had a headroom of 11db.
+
+[^valhalla-room]: [valhalladsp.com/shop/reverb/valhalla-room](https://valhalladsp.com/shop/reverb/valhalla-room)
+
 ## Mastering
+
+During the mastering process I found that the soundscape contains almost no high frequency content.
+This is the result of using audio sources with sample rate of 16Khz, that have spectral content up to 8Khz according to Nyquist–Shannon sampling theorem [@shannon1949communication].
+I tried to add some higher frequency content by using exciters, overdrive on parallel track, saturation emulators and more but non of the solution really opened up the higher frequencies without sounding to harsh.
+Thereby, I decided that I won't fix this issue and will leave it as is.
+
+For the mastering I used 4 traditional mastering audio effects on the main bus:
+
+- **EQ** to boost the low and high ends of the spectrum and attenuate some blur in the low mids and harsh sound in the high mids.
+- **Compressor** with ratio of 1.5 and slow attack and release to reduce the dynamic range by up to 6db. This compressor is very clean and I found it perfect for the mastering task.
+- **Tape simulator** to add saturation and warm up the overall mix a bit. Note that the dynamics section of the effect was not used.
+- **Mastering limiter** with threshold set to -3db to make sure that the final result doesn't clip, and to boost the overall signal in few more decibells. The maximum output is set to a value lower than 0 to make sure no inter-sample peaks will clip.
+
+The tape simulation on the main bus is very responsive to changes in input gain.
+I wanted it to work on relatively hot signal, so I started by boosting the mix track by 10db, causing it to play close to the 0db limit of the DAW.
+If I wasn't using this tape simulation I would probably keep the mix track on 0db and boost the entire mastering by the limiter at the end of the mastering chain.
+
+Finally, I used an inter-sample peak meters to make sure that there is no clipping.
 
 # Discussion
 
