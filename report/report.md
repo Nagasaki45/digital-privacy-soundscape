@@ -1,5 +1,5 @@
 ---
-title: '"Digital privacy": A semi-generative soundscape. Concept and technical description'
+title: '"Digital privacy": A deep learning generated soundscape. Concept and technical description'
 abstract: In this work I explore new ways to algorithmically generate audio materials for soundscape composition using deep learning techniques. These algorithms can learn audio characteristics by listening to raw audio and later generate new samples with similar properties. The deep learning model is trained on audio excerpts deliberately containing private information. The algorithmically generate audio materials are later used to compose soundscape that mirror the existing conflicts between art, artificial intelligence, and privacy in the age of ubiquitous surveillance.
 author: Tom Gurion
 date: \today
@@ -13,7 +13,7 @@ linestretch: 1.5
 
 In recent years researchers studies new algorithmically ways to compose soundscapes.
 Similarly to traditional techniques for computer composition, these algorithms always generate high level parameters for the performance of the musical piece, and usually use audio sources from existing audio databases.
-High level parameters may include geo-location information, semantical meaning, or spectral characteristics of the sounds to use, and can affect later processing and mixing of the sounds.
+High level parameters may include geo-location information, semantic meaning, or spectral characteristics of the sounds to use, and can affect later processing and mixing of the sounds.
 However, with recent techniques from the field of machine learning it might be possible to generate streams of raw audio that are based only on the ability of computers and algorithms to learn by listening to audio.
 
 In the current work I create a semi-generative soundscape that explores the computer's perception of digital privacy, using deep learning neural networks.
@@ -22,8 +22,6 @@ It is important to note that the audio sources deliberately contain a lot of pri
 Than, a deep neural network is trained with these recordings, extract patterns in the audio stream and build up artificial understanding of audio characteristics to later mimic them when generating raw audio.
 Finally, these new audio sources are used to compose a soundscape.
 The final result investigate the relationships between art, algorithms, and digital privacy in the age of surveillance.
-
-The following sections present the literature background for the project and plans for realizing the concept.
 
 # Literature review
 
@@ -83,8 +81,8 @@ The concept of local conditioning and its applications, as presented in this stu
 ### Training steps
 
 Training a deep neural network like _WaveNet_ is done iteratively.
-As the number of iterations done during training phase, the model ability of to understand the characteristics of the input field increase.
-However, there is always a trade-off, as each step might take a lot of time and resources to compute.
+As number of iterations done during training phase increase the model is more able to understand the characteristics of the input field.
+However, there is always a trade-off in such systems, as each step might take a lot of time and resources to compute.
 Therefore, deep neural networks are usually trained on dedicated hardware that can accelerate the steps.
 
 ### Receptive field
@@ -114,11 +112,11 @@ Influenced by the promises of _WaveNet_, I tried to train a deep neural network 
 This way, after learning the sonic characteristics of the original sources it might be able to generate similar but content-less audio.
 I used the free and open source project _tensorflow-wavenet_[^tensorflow-wavenet], which is entitled as "a TensorFlow implementation of the WaveNet generative neural network architecture for audio generation".
 Unfortunately, I failed to use this technology to generate raw audio that demonstrate similar sonic characteristics to the sources.
-An elaborated explanation this attempt didn't succeed is presented in the next section.
+An elaborated explanation why this attempt didn't succeed is presented in the next section.
 
-Finally, instead of generating audio for the soundscape I used samples of other users of the same software package that are available online.
+Finally, instead of generating audio for the soundscape I used samples of other users of the same software package that were available online.
 I used the REAPER DAW[^reaper] to edit, mix, and master the final soundscape.
-In general, the composition followed the four basic soundscape composition principles of Eigenfeldt and Pasquier using the algorithmically generated materials crowd sourced from the web.
+In general, the composition followed the four basic soundscape composition principles of Eigenfeldt and Pasquier using the algorithmically generated materials crowd-sourced from the web.
 
 [^zoom]:[zoom-na.com/products/field-video-recording/field-recording/zoom-h4n-handy-recorder](https://www.zoom-na.com/products/field-video-recording/field-recording/zoom-h4n-handy-recorder).
 [^tensorflow-wavenet]: [github.com/ibab/tensorflow-wavenet](https://github.com/ibab/tensorflow-wavenet).
@@ -128,25 +126,25 @@ In general, the composition followed the four basic soundscape composition princ
 
 I started by recording approximately 10 hours of diverse materials, as planned, using the Zoom H4n handheld audio recorder[^zoom] on a tripod in my apartment.
 Each recording was manually sliced to create audio files that contain homogeneous content.
-For example, when a long recording starts with a conversation and continues with dish washing I manually slice it into two separated audio files.
+For example, when a long recording starts with a conversation and continues with dish washing I manually sliced it into two separated audio files.
 I intended to rely on the homogeneity of the audio files to train the deep neural network, when the content is considered as the global conditioning context.
 In the study of Van Den Oord et al. the global context for conditioning was the speaker; in the current work the context is the content of the audio source.
 
 After training the model with this content the generated audio contained nothing but noise and crackles.
 In retrospective, there are several reason for this first failure:
 
-- Compared to the VCTK corpus, which is used by Van Den Oord et al. and by the _tensorflow-wavenet_ users, my audio files were way more noisy.
+- Compared to the VCTK[^vctk-corpus] corpus, which is used by Van Den Oord et al. and by the _tensorflow-wavenet_ users, my audio files were way more noisy.
 - Similarly, my audio files were more sonically diverse, preventing the model from generalizing properly.
 - I probably used too long receptive field.
-I tried to reduce the sample rate from 16Khz to 8Khz to train the model faster but kept the dilated layers with the same length.
-The training might run faster if I reduce the dilated layer length, without scarifying the model ability to generalize.
+I tried to reduce the sample rate from 16Khz to 8Khz to train the model faster but didn't changed the rest of the model parameters causing the receptive field to be twice as long as the default.
+The training might run faster if I reduce the receptive field length, without scarifying the model ability to generalize.
 - Lastly, all of the successful results from _tensorflow-wavenet_ users used more than 15,000 training steps, when best results achieved after 50,000 steps or more.
 On my computer it is just not feasible, as it takes approximately 10 seconds for training step (~6 days to reach 50K steps).
 
 As a second attempt I tried to train the model on the VCTK corpus, as several users did and succeeded.
 For me, it was a required step to make sure that I know how to use the software properly, what are its capabilities, and what can be considered computational feasible using my setup.
-This attempt also failed, but I managed to learn most of the above points from its failure.
-In addition, I found out that training a model on the whole dataset is even more computationally intensive and most users train the model on single speaker or even single audio file (a sentence recorded by a speaker).
+This attempt also failed, but I managed to learn most of the above points from that failure.
+In addition, I found out that training a model on the whole dataset is even more computationally intensive and most users train the model on single speaker or even single audio file (a sentence recorded by a single speaker).
 
 Lastly, I tried to use Amazons' services for training the model on a computer in the cloud that is much more capable than mine and has a GPU for deep learning.
 However, the registration should be manually accepted by the support team, and by the time I got a response from them I already choose an alternative realization for the concept.
@@ -154,13 +152,14 @@ However, the registration should be manually accepted by the support team, and b
 To summarize, all of my attempts to use _tensorflow-wavenet_ failed.
 I learned from the failures, but not fast enough to find solutions in time for this assignment.
 
+[^vctk-corpus]: [homepages.inf.ed.ac.uk/jyamagis/page3/page58/page58.html](http://homepages.inf.ed.ac.uk/jyamagis/page3/page58/page58.html).
+
 ## An alternative
 
 Instead of generating all of the audio samples for the soundscape I choose to compose a soundscape from samples from three main sources:
 
 1. **Mine**: samples I generated using _tensorflow-wavenet_ and are generally used as noise sources.
 However, in some of the samples the resulting noisy signal have some temporal speech like characteristics, so I used them in the composition.
-These samples can be found online[^my-samples].
 1. **Users**: samples downloaded from _tensorflow-wavenet_ users.
 In this case, the model was properly trained and the output is perceptually similar to speech sounds.
 Samples in this category are the most varied due to different approaches and constrains the users of the library had.
@@ -175,7 +174,6 @@ Therefore, questions of privacy and our relations with technology still present 
 
 [^my-samples]: [github.com/Nagasaki45/digital-privacy-soundscape/tree/master/samples/mine](https://github.com/Nagasaki45/digital-privacy-soundscape/tree/master/samples/mine).
 [^tensorflow-wavenet-samples]: [github.com/ibab/tensorflow-wavenet/issues/47](https://github.com/ibab/tensorflow-wavenet/issues/47).
-[^vctk-corpus]: [homepages.inf.ed.ac.uk/jyamagis/page3/page58/page58.html](http://homepages.inf.ed.ac.uk/jyamagis/page3/page58/page58.html).
 
 # Production decisions
 
@@ -195,7 +193,7 @@ The part ends by building up a cloud of babbling sounds.
 This cloud gradually gets darker and goes to the back to give space of the second part of the piece.
 
 The second part of the soundscape starts while the cloud of babbling sounds is still playing in the background.
-A narrator starts to talk with the first voice in the composition that mimic human behaviour well.
+A narrator starts to talk with the first voice in the composition that mimic human behaviour properly.
 The fact that the content of the narration is meaningless makes the experience mysterious and somewhat annoying.
 Than, the narrator is interrupted by another voice, and shortly after a group of more human sounding speakers join the intense conversation.
 During the second part of the piece there is exploration of different aspects of the artificially speech.
@@ -204,11 +202,11 @@ This part come to an end in a distinct cut in the dense mesh of voices, short bu
 
 The third and last part of the piece starts with a babbling cloud, now based on the voices from the conversations of part two.
 This cloud starts far from the listener and gets closer over time.
-In addition, the babbling gradually replaced by the noises from the beginning.
+In addition, the babbling is gradually replaced by the noises from the beginning.
 These two characteristics mirror the cloud that ends the first part.
 The piece ends with more noises and incoherent sounds of spoken syllables that were presented in the first part.
 As opposed to the first part, they are now accompanied by a sounds from the second part in the far background.
-The final phrase in the soundscape is the burst of noises that open the piece.
+The final phrase in the soundscape is the burst of noises that opened the piece.
 
 This cyclic structure invite the listener to hear how algorithms listen to and mimic human speech.
 The uniqueness of the audio sources used in the soundscape are mysterious, fascinating, and annoying at the same time, especially when considering the possibility that technology is always listening to our everyday life.
@@ -216,8 +214,8 @@ Gradually returning to the beginning when only noises are presented allows the l
 
 ## Layout and editing
 
-In this section I will describe the technical part of the composition, which mainly involved precise editing and manipulating the samples.
-This processes are usually described as part of the mixing phase of a track, but I prefer to describe them separately due to the role of the techniques in the soundscape:
+In this section I will describe the technical part of the composition, which mainly involved precise editing and manipulating of the samples.
+These processes are usually described as part of the mixing phase of a track, but I prefer to describe them separately due to the role of the techniques in the soundscape:
 whereas mixing usually starts after all of the material is organized in time, the techniques below are crucial part in the organization of the material.
 
 The soundscape was composed, edited, mixed and mastered using the REAPER DAW.
@@ -231,19 +229,19 @@ Using this color coding of samples it is clearly visible that the soundscape gra
 Towards the end of the piece the process is reversed.
 The special characteristic of each samples category was used in this way to support the composition.
 
-It is important to note that although the samples of the **users** category generally demonstrate well sounded human speech sounds they still contain a lot of noise (clicks).
+It is important to note that although the samples of the **users** category are generally clean and well sounded they still contain a lot of noise (clicks).
 Moreover, all of the samples in the composition are sampled in a sample rate of 16Khz.
 I found this issues somewhat problematic during the mastering process, but overall, the "lo-fi" characteristic can support the general concept of algorithmic perception of human behavior.
 
-The whole soundscape is organized as three audio groups: noise, babbling, and cloud.
+The whole soundscape is organized using three audio groups: noise, babbling, and cloud.
 The noise and the babbling groups contain three tracks each, one for left panned content, one for right panned content, and one for the content in the middle.
-I found that this organization of content to be both productive and creative.
+I found this content organization to be both productive and creative.
 
 The cloud track uses the REAPER feature of tracks with "Free item positioning".
 That way I can place several different items that will play in parallel on the same track.
 The cloud track is used for both noises and babbling sounds.
 The "Free item positioning" feature allow me to transition gradually between clouds of different audio sources.
-Having the different sources on the same track unify them as the pass through the same effects.
+Having the different sources on the same track unify them as they pass through the same effects.
 For example, in 0:50-1:00 there is a transition between different audio materials in a cloud, from noises to babbling, while the cloud as a whole goes back in the mix using effects automation.
 I wrote a script to randomise panning of items[^random-panning-script] and used it on most of the clouds in the composition to made them rich and wide sounding.
 In addition, I tend to apply time stretching and pitch shifting manually to some of the clouds to emphasize specific peaks in the composition (an example can be heard 2:01-2:10).
@@ -253,13 +251,15 @@ Starting in the second part of the composition, I wanted most of the speech like
 However, I found that after a cloud ends the continuation without a reverb make the sound too thin.
 To solve this I recorded the sound of the reverb channel (only the wet signal), and used it as another audio source.
 For example, during most of the second part of the composition there is a wet reverb signal playing parts of the first part of the composition.
-This technique added a lot of depth to the mix, but without blurring the speech sounds in the front of the mix (such as the narrator that opens the second part).
+This technique added a lot of depth to the mix, but without blurring the speech sounds in the front of the mix such as the narrator that opens the second part.
+
+[^random-panning-script]: [gist.github.com/Nagasaki45/98110bc9205ca7225d5865ecd5f606d8](https://gist.github.com/Nagasaki45/98110bc9205ca7225d5865ecd5f606d8).
 
 ## Mixing
 
-The mixing stage of the soundscape did not involve a lot of manipulation, as most of the work was already done in the previous step as described before.
+The mixing stage of the soundscape did not involve a lot of manipulation, as most of the work was already done in the previous editing step.
 However, I found that the babbling group lacked high frequency content and was dynamically unstable.
-To solve this I used an exciter to open up the higher frequencies and a compressor to reduce the dynamic range of the group.
+Therefore, I used an exciter to open up the higher frequencies and a compressor to reduce the dynamic range of the group.
 
 The reverb used in the composition is the Valhalla Room[^valhalla-room], set to long dark reverberation.
 I decided to send the left and right tracks of the babbling group to the reverb and added automation to send the cloud to the reverb during the second part of the composition.
@@ -272,18 +272,18 @@ The output wav file had a headroom of 11db.
 ## Mastering
 
 During the mastering process I found that the soundscape contains almost no high frequency content.
-This is the result of using audio sources with sample rate of 16Khz, that have spectral content up to 8Khz according to Nyquist–Shannon sampling theorem [@shannon1949communication].
-I tried to add some higher frequency content by using exciters, overdrive on parallel track, saturation emulators and more but non of the solution really opened up the higher frequencies without sounding to harsh.
+This is the result of using audio sources with sample rate of 16Khz, that have spectral content up to 8Khz according to the Nyquist–Shannon sampling theorem [@shannon1949communication].
+I tried to add some higher frequency content by using exciters, overdrive on parallel track, saturation emulators and more but non of the solution really opened up the higher frequencies without sounding too harsh.
 Thereby, I decided that I won't fix this issue and will leave it as is.
 
-For the mastering I used 4 traditional mastering audio effects on the main bus:
+For the mastering I used 4 traditional mastering audio effects on the main bus as presented in figure \ref{daw-mastering}:
 
 - **EQ** to boost the low and high ends of the spectrum and attenuate some blur in the low mids and harsh sound in the high mids.
 - **Compressor** with ratio of 1.5 and slow attack and release to reduce the dynamic range by up to 6db. This compressor is very clean and I found it perfect for the mastering task.
 - **Tape simulator** to add saturation and warm up the overall mix a bit. Note that the dynamics section of the effect was not used.
 - **Mastering limiter** with threshold set to -3db to make sure that the final result doesn't clip, and to boost the overall signal in few more decibells. The maximum output is set to a value lower than 0 to make sure no inter-sample peaks will clip.
 
-The tape simulation on the main bus is very responsive to changes in input gain.
+The tape simulation on the main bus is very sensitive to changes in input gain.
 I wanted it to work on relatively hot signal, so I started by boosting the mix track by 10db, causing it to play close to the 0db limit of the DAW.
 If I wasn't using this tape simulation I would probably keep the mix track on 0db and boost the entire mastering by the limiter at the end of the mastering chain.
 
@@ -296,20 +296,21 @@ Technically speaking, the original idea of the soundscape possessed several tech
 Although I failed to realize the project in the way I intended to in the beginning, it was possible to use the same underlying technology with the help of crowd-sourced audio materials.
 These materials doesn't contain the content I was wishing for.
 However, knowing in advance that the process will completely obscure the content in the sources may suggest that it is almost irrelevant for the final output.
-Moreover, the samples I choose are of high quality relatively to what I was able to achieve by my own even if in an optimistic scenario.
+Moreover, the samples I choose are of high quality relatively to what I were able to achieve by my own even in an optimistic scenario.
 The higher quality of the samples, in return, allowed the creation of a soundscape that is easier to reason about:
 the sounds of meaningless human speech are unique, the algorithms clearly mimic human behaviour but they still different, they don't similar to us.
 In my opinion, the fact that these samples are algorithmically generated is clear in the soundscape, supporting the idea that listeners should be able to understand and relate to the context in a soundscape.
 
-I wished that with more time and resources I would be able to realize the original concept.
-Deep learning transform several fields in science today and there is no reason that it won't have a deep effect on compositional techniques.
+I wished that I had more time and resources to be able to realize the original concept.
+Deep learning already transform several fields in the sciences and there is no reason that it won't have a deep effect on compositional techniques.
 
-# Conclusion
+# Conclusions
 
-The composition tries to explore the ways in which machines builds an understanding of a human behaviour such as speech.
-It builds gradually, demonstrate different capabilities and characteristics, and break down back to noise.
-In general, I believe that the questions about our relationship with technology are visible in the soundscape.
-In addition, I hope that it directs the listener to reason about the way technology "perceive" us.
+This soundscape explores new ways to facilitate new deep learning technology as a creative tool.
+More specifically, it investigate the ways machines build an understanding of a human behaviour such as speech.
+The composition builds gradually, demonstrates different capabilities and characteristics of an algorithm to mimic human speech, and breaks down back to noise.
+In general, I believe that the questions about our relationship with technology are visible in the soundscape, and hope that it directs the listener to reason about the ways in which technology "perceive" us.
+Although not deal directly, these ideas have specific implications for how we think about our privacy in everyday life, when technology evolve and able to capture and demonstrate human behaviours.
 
 # Appendix A: List of sounds
 
