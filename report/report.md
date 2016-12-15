@@ -288,10 +288,28 @@ I wanted it to work on relatively hot signal, so I started by boosting the mix t
 If I wasn't using this tape simulation I would probably keep the mix track on 0db and boost the entire mastering by the limiter at the end of the mastering chain.
 
 Finally, I used an inter-sample peak meters to make sure that there is no clipping.
+The master track was rendered to CD quality with dithering with noise shaping.
 
 # Discussion
 
+Technically speaking, the original idea of the soundscape possessed several technological challenges.
+Although I failed to realize the project in the way I intended to in the beginning, it was possible to use the same underlying technology with the help of crowd-sourced audio materials.
+These materials doesn't contain the content I was wishing for.
+However, knowing in advance that the process will completely obscure the content in the sources may suggest that it is almost irrelevant for the final output.
+Moreover, the samples I choose are of high quality relatively to what I was able to achieve by my own even if in an optimistic scenario.
+The higher quality of the samples, in return, allowed the creation of a soundscape that is easier to reason about:
+the sounds of meaningless human speech are unique, the algorithms clearly mimic human behaviour but they still different, they don't similar to us.
+In my opinion, the fact that these samples are algorithmically generated is clear in the soundscape, supporting the idea that listeners should be able to understand and relate to the context in a soundscape.
+
+I wished that with more time and resources I would be able to realize the original concept.
+Deep learning transform several fields in science today and there is no reason that it won't have a deep effect on compositional techniques.
+
 # Conclusion
+
+The composition tries to explore the ways in which machines builds an understanding of a human behaviour such as speech.
+It builds gradually, demonstrate different capabilities and characteristics, and break down back to noise.
+In general, I believe that the questions about our relationship with technology are visible in the soundscape.
+In addition, I hope that it directs the listener to reason about the way technology "perceive" us.
 
 # Appendix A: List of sounds
 
