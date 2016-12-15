@@ -65,7 +65,7 @@ This technique was later termed _style transfer_, and is used to apply the style
 In the context of creative applications, the research of Van Den Oord et al. is perceived as a crucial first step toward _DeepDream_ and _style transfer_ in the audio domain[^audio-transfer-reddit].
 Thus, it is not surprising that attempts are already being made to enable _style transfer_ in the audio domain based on similar techniques[^audio-transfer-repo].
 
-![\label{deepdream-and-style-transfer}**Left** - A DeepDream version of Van Gogh's Starry Night. **Right** - A style transfer showing the original images for the content and style and the resulted image.](media/deepdream_and_style_transfer.jpg)
+![\label{deepdream-and-style-transfer}On the left, a DeepDream version of Van Gogh's Starry Night. On the right, a style transfer showing the original images for the content and style and the resulted image.](media/deepdream_and_style_transfer.jpg)
 
 [^wavenet-blog]: [deepmind.com/blog/wavenet-generative-model-raw-audio](https://deepmind.com/blog/wavenet-generative-model-raw-audio/).
 [^deepdream-blog]: [research.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html](https://research.googleblog.com/2015/06/inceptionism-going-deeper-into-neural.html).
@@ -290,7 +290,14 @@ Finally, I used an inter-sample peak meters to make sure that there is no clippi
 
 # Appendix A: List of sounds
 
-Table: Samples used in the soundscape\label{samples-table}. Steps TODO explain. Bootstraping TODO explain. TODO note of other params - primary receptive field. TODO Sample size.
+Table \ref{samples-table} presents all of the audio samples used in the soundscape.
+The columns in the table are:
+
+- **Sample** - the name and exact location of the sample online[^nagasaki45-samples].
+- **Steps** - the number of steps used to train the model that was used to generate this sample.
+- **RF** - the receptive field that was used when training the model.
+
+Table: \label{samples-table}Samples used in the soundscape. Bootstrapping refers to samples that start with audio sources from the dataset and continues with generated audio.
 
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 Sample                                              Steps     RF         Details
@@ -330,13 +337,15 @@ Sample                                              Steps     RF         Details
 `users/13.mp3`                                      50K       300ms      [Trained on a Korean speech corpus](https://soundcloud.com/nako-sung/test-3-wav).
 -----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
+[^nagasaki45-samples]: [github.com/Nagasaki45/digital-privacy-soundscape/tree/master/samples](https://github.com/Nagasaki45/digital-privacy-soundscape/tree/master/samples).
+
 # Appendix B: Screenshots
 
-![\label{daw-arrangement}TODO arrangement caption.](media/daw_arrangement.png)
+![\label{daw-arrangement}The arrangement view in REAPER DAW. Samples in red are from the category **mine**. Samples in green are from the category **users**. Samples in blue are from the category **wavenet**. Samples in yellow are the bounces of the reverb channel. The Cloud channel uses the "Free items positioning" feature of REAPER and is presented in the middle of the figure. Automations lines for stereo width of the Noise group, reverb send and EQ dry/wet controller for the Cloud channel are also presented.](media/daw_arrangement.png)
 
-![\label{daw-mixer}TODO mixer caption.](media/daw_mixer.png)
+![\label{daw-mixer}The mixer in REAPER DAW. There are only a few effects on the channels. Most of the composition was done in term of editing.](media/daw_mixer.png)
 
-![\label{daw-mastering}TODO mastering caption.](media/daw_mastering.png)
+![\label{daw-mastering}The mastering project. There are 4 effects on the master channel: EQ, compressor, tape simulation and limiter.](media/daw_mastering.png)
 
 \newpage
 
