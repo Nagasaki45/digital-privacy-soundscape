@@ -82,11 +82,16 @@ The concept of local conditioning and its applications, as presented in this stu
 
 ### Training steps
 
-TODO training steps
+Training a deep neural network like _WaveNet_ is done iteratively.
+As the number of iterations done during training phase, the model ability of to understand the characteristics of the input field increase.
+However, there is always a trade-off, as each step might take a lot of time and resources to compute.
+Therefore, deep neural networks are usually trained on dedicated hardware that can accelerate the steps.
 
 ### Receptive field
 
-TODO receptive field
+In the context of _WaveNet_, the receptive field is measured in milliseconds and is the period of time before each sample that affect the generation of it.
+For example, most of the samples I used in this soundscape have a receptive field of between 300ms and 500ms, meaning that each sample was calculated based on the previous 300 to 500 milliseconds of audio.
+Increasing the receptive field usually result in a more natural sound, but doing so encounter the same computational limitation from before, as it extends the time and resources need to train the model properly.
 
 ## Digital privacy
 
